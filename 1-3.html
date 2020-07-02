@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>First Duplicate</title>
+		<style>
+			body {margin: 0;padding: 0;font-family: sans-serif;}
+			.header {background-color: #222;height: 50px;padding: 20px;color: white;}
+			.title {font-size: 1.5em;text-align: center}
+			.intro {width:800px;margin: 0px auto;font-size: 16px;line-height: 25px;}
+			button{background-color:#2e7d32;color:#fff;padding:10px 20px;font-size:14px;font-weight: bold;border:1px solid #33691e;cursor: pointer;margin:15px;}
+			button:hover {box-shadow: 2px 2px 5px #33691e;}
+			em{color:red;}
+		</style>
+	</head>
+	<body>
+		<div class="App">
+			<header class="header">
+				<h1 class="title">SCRIMBA - JSChallenge - First Duplicate</h1>
+			</header>
+			<div class="intro"><br />
+				Given an array 'a' that contains only numbers, find the first duplicate number for which the second occurance has the minimal index. If there are more than 1 duplicated numbers retun the number for which the second occurance has a smaller index than the second occurance of the other number. IF no such element exists return -1<br />
+				<em>hint: hasownproperty()</em><br />
+				eg: <br />
+				  a = [2, 1, 3, 5, 3, 2]<br />
+				  firstDuplicate(a) = 3<br /><br />
+				  a = [2, 4, 3, 1]<br />
+				  firstDuplicate(a) = -1<br /><br />
+				<button onclick="getResults()">View Result</button><br />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>
+			const numArr1 = [2, 1, 3, 5, 3, 2];
+			const numArr2 = [2, 4, 3, 1];
+			
+			const firstDuplicate = (nums) =>{
+				let firstDup = {}
+				for(let num of nums){
+					if(firstDup.hasOwnProperty(num)){
+						return num;
+					}
+					firstDup[num] = num;
+				}
+				return -1;
+			}
+			
+			const getResults = () =>{
+				document.getElementById('result').innerHTML = `
+					Array: ${numArr1} <br />
+					First Duplicate is : ${firstDuplicate(numArr1)}<hr />
+					Array: ${numArr2} <br />
+					First Duplicate is : ${firstDuplicate(numArr2)}`;
+			}
+		</script>
+	</body>
+</html>

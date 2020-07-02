@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Factorial of Number</title>
+		<style>
+			body {margin: 0;padding: 0;font-family: sans-serif;}
+			.header {background-color: #222;height: 50px;padding: 20px;color: white;}
+			.title {font-size: 1.5em;text-align: center}
+			.intro {width:800px;margin: 0px auto;font-size: 16px;line-height: 25px;}
+			button{background-color:#2e7d32;color:#fff;padding:10px 20px;font-size:14px;font-weight: bold;border:1px solid #33691e;cursor: pointer;margin:15px;}
+			button:hover {box-shadow: 2px 2px 5px #33691e;}
+			em{color:red;}
+		</style>
+	</head>
+	<body>
+		<div class="App">
+			<header class="header">
+				<h1 class="title">SCRIMBA - JSChallenge - Factorial of Number</h1>
+			</header>
+			<div class="intro"><br />
+				Given a number, find the factorial of said number<br />
+				eg: <br />
+				5! = 1*2*3*4*5 = 120<br /><br />
+				<input type="number" placeholder="Enter a number" id="num" /><br />
+				<button onclick="getResults()">View Result</button><br />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>			
+			const factorialNum = (num) =>{
+				let total = 1;
+				for(i=1;i<=num;i++)
+					total *= i;
+				return total;
+			}
+			
+			const getResults = () =>{
+				const num = document.getElementById('num').value;
+				document.getElementById('result').innerHTML = `The factorial of ${num} is: ${factorialNum(num)}`
+			}
+		</script>
+	</body>
+</html>

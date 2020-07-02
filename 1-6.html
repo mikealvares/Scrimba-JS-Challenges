@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Missing Numbers</title>
+		<style>
+			body {margin: 0;padding: 0;font-family: sans-serif;}
+			.header {background-color: #222;height: 50px;padding: 20px;color: white;}
+			.title {font-size: 1.5em;text-align: center}
+			.intro {width:800px;margin: 0px auto;font-size: 16px;line-height: 25px;}
+			button{background-color:#2e7d32;color:#fff;padding:10px 20px;font-size:14px;font-weight: bold;border:1px solid #33691e;cursor: pointer;margin:15px;}
+			button:hover {box-shadow: 2px 2px 5px #33691e;}
+			em{color:red;}
+		</style>
+	</head>
+	<body>
+		<div class="App">
+			<header class="header">
+				<h1 class="title">SCRIMBA - JSChallenge - Missing Numbers</h1>
+			</header>
+			<div class="intro"><br />
+				Given an un ordered array of non negative numbers. Sort themfrom smallets to largest so difference in size is 1. Additional numbers might be needed to fill in missing values. Return the total number of missing numbers<br />
+				<em>hint: sort, indexof</em><br />
+				eg: <br />
+				makeArrayConsecutive([6,2,3,8]) = 3<br /><br />
+				<button onclick="getResults()">View Result</button><br />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>
+			const numArr = [6,2,3,9]
+			
+			const makeArrayConsecutive = (nums) =>{
+				const numArr = [...nums.sort()];
+				let total = 0;
+				numArr.forEach((value,index,array) => (index < array.length)? (array[index+1]-value>1)?total+=(array[index+1]-value-1):false:false);
+				return total;
+			}
+			
+			const getResults = () =>{
+				document.getElementById('result').innerHTML = `
+					Array: ${numArr} <br />
+					Total number of missing numbers: ${makeArrayConsecutive(numArr)}`;
+			}
+		</script>
+	</body>
+</html>

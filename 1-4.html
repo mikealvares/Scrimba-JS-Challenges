@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Sum of All Primes</title>
+		<style>
+			body {margin: 0;padding: 0;font-family: sans-serif;}
+			.header {background-color: #222;height: 50px;padding: 20px;color: white;}
+			.title {font-size: 1.5em;text-align: center}
+			.intro {width:800px;margin: 0px auto;font-size: 16px;line-height: 25px;}
+			button{background-color:#2e7d32;color:#fff;padding:10px 20px;font-size:14px;font-weight: bold;border:1px solid #33691e;cursor: pointer;margin:15px;}
+			button:hover {box-shadow: 2px 2px 5px #33691e;}
+			em{color:red;}
+		</style>
+	</head>
+	<body>
+		<div class="App">
+			<header class="header">
+				<h1 class="title">SCRIMBA - JSChallenge - Sum of All Primes</h1>
+			</header>
+			<div class="intro"><br />
+				Sum of Prime Numbers up to and including the provided number.<br />
+				A prime number is defined as a number greater then one and having only two divisors, 1 and itself. Eg 2 is prine number because it is divisable by one and two.<br />
+				The proivided number may not be a prime.<br />
+				eg: <br />
+				sumAllPrime(10) = 17<br />
+				sumAllPrime(977) = 73156<br /><br />
+				<input type="number" placeholder="Enter the number" id="nums" /><br />
+				<button onclick="getResults()">View Result</button><br />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>			
+			const sumAllPrime = (nums) =>{
+				let total=0;
+				if (nums <= 1)
+					return 0;
+				for (i=2; i<=nums; i++){
+					isPrime = true
+					for(j=2; j<i; j++){
+						if(i%j === 0)
+							isPrime=false
+					}
+					if(isPrime)
+						total+= i;
+				}
+				return total;
+			}
+			
+			const getResults = () =>{
+				const nums = document.getElementById('nums').value;
+				document.getElementById('result').innerHTML = `The Sum of All Primes is : ${sumAllPrime(nums)}`
+			}
+		</script>
+	</body>
+</html>

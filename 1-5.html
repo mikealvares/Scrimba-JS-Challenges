@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Even Digits</title>
+		<style>
+			body {margin: 0;padding: 0;font-family: sans-serif;}
+			.header {background-color: #222;height: 50px;padding: 20px;color: white;}
+			.title {font-size: 1.5em;text-align: center}
+			.intro {width:800px;margin: 0px auto;font-size: 16px;line-height: 25px;}
+			button{background-color:#2e7d32;color:#fff;padding:10px 20px;font-size:14px;font-weight: bold;border:1px solid #33691e;cursor: pointer;margin:15px;}
+			button:hover {box-shadow: 2px 2px 5px #33691e;}
+			em{color:red;}
+		</style>
+	</head>
+	<body>
+		<div class="App">
+			<header class="header">Even Digits</h1>
+			</header>
+			<div class="intro"><br />
+				Check if all the digits in an integer are even<br />
+				<em>hint: toString, split, every, parseInt</em><br />
+				eg: <br />
+				evenDigits(2486) = true<br />
+				evenDigits(6423) = false<br /><br />
+				<input type="number" placeholder="Enter the integer" id="number" /><br />
+				<button onclick="getResults()">View Result</button><br />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>			
+			const evenDigits = (num) =>{
+				return num.toString().split('').every((digit) => parseInt(digit)%2===0)
+			}
+			
+			const getResults = () =>{
+				const num = document.getElementById('number').value;
+				document.getElementById('result').innerHTML = `The integer has all even digits : ${evenDigits(num)}`
+			}
+		</script>
+	</body>
+</html>

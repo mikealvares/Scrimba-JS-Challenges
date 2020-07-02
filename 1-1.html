@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>Add a border</title>
+		<style>
+			body {margin: 0;padding: 0;font-family: sans-serif;}
+			.header {background-color: #222;height: 50px;padding: 20px;color: white;}
+			.title {font-size: 1.5em;text-align: center}
+			.intro {width:800px;margin: 0px auto;font-size: 16px;line-height: 25px;}
+			button{background-color:#2e7d32;color:#fff;padding:10px 20px;font-size:14px;font-weight: bold;border:1px solid #33691e;cursor: pointer;margin:15px;}
+			button:hover {box-shadow: 2px 2px 5px #33691e;}
+			em{color:red;}
+		</style>
+	</head>
+	<body>
+		<div class="App">
+			<header class="header">
+				<h1 class="title">SCRIMBA - JSChallenge - Add a border</h1>
+			</header>
+			<div class="intro"><br />
+				Given a rectangular matrix of characters, add a border of * to it.<br />
+				<em>hint: concat, unshift, push</em><br />
+				eg: <br />
+				picture = ['abc', 'def']<br />
+				addBorder(picture) = [<br />
+			    	'*****',<br />
+			    	'*abc*',<br />
+			    	'*def*',<br />
+			    	'*****'<br />
+				]<br /><br />
+				<button onclick="getResults()">View Result</button><br />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>
+			const charArray1 = ['abc','def'];
+			const charArray2 = ['abcd','efgh'];
+			const charArray3 = ['abc','efgh'];
+			
+			const addBorder = (charArray) =>{
+				let len = 0;
+				let matrixCheck = charArray.reduce((length,value) => {return length =length.length+value.length;});
+				if((matrixCheck % charArray.length)!=0) return "<em>Invalid Matrix</em>";
+				charArray.forEach((value) =>{if (len<value.length) len=value.length;})
+				let newArr = [...charArray]
+				newArr.forEach((value, index, array)=> {array[index]="*".concat(value,"*")});
+				newArr.unshift("*".repeat(len+2))
+				newArr.push("*".repeat(len+2))
+				return newArr 
+			}
+			
+			const getResults = () =>{
+				document.getElementById('result').innerHTML = `
+					Original Matrix: ${charArray1} <br />
+					Matrix with a border: ${addBorder(charArray1)}<hr />
+					Original Matrix: ${charArray2} <br />
+					Matrix with a border: ${addBorder(charArray2)}<hr />
+					Original Matrix: ${charArray3} <br />
+					Matrix with a border: ${addBorder(charArray3)}`;
+			}
+		</script>
+	</body>
+</html>
