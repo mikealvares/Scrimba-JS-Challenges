@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>First Digit</title>
+		<style>
+			body {margin: 0;padding: 0;font-family: sans-serif;}
+			.header {background-color: #222;height: 50px;padding: 20px;color: white;}
+			.title {font-size: 1.5em;text-align: center}
+			.intro {width:800px;margin: 0px auto;font-size: 16px;line-height: 25px;}
+			button{background-color:#2e7d32;color:#fff;padding:10px 20px;font-size:14px;font-weight: bold;border:1px solid #33691e;cursor: pointer;margin:15px;}
+			button:hover {box-shadow: 2px 2px 5px #33691e;}
+			em{color:red;}
+		</style>
+	</head>
+	<body>
+		<div class="App">
+			<header class="header">
+				<h1 class="title">SCRIMBA - JSChallenge - First Digit</h1>
+			</header>
+			<div class="intro"><br />
+				Return the left most digit that occurs in a given string<br />
+				<em>hint: split, includes</em>
+				eg: <br />
+				var_1_Int= 1<br />
+				q2q-q= 2<br />
+				0ss= 0<br /><br />
+				<input type="text" placeholder="Enter a number" id="num" /><br />
+				<button onclick="getResults()">View Result</button><br />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>			
+			const firstNum = (num) =>{
+				const numArr = num.split('');
+				for(i of numArr)
+					if (!Number.isNaN(parseInt(i))) return i;
+				return 'N/A';
+			}
+			
+			const getResults = () =>{
+				const num = document.getElementById('num').value;
+				document.getElementById('result').innerHTML = `The first number in ${num} is: ${firstNum(num)}`
+			}
+		</script>
+	</body>
+</html>
